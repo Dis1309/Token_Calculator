@@ -2,6 +2,7 @@
  import 'package:http/http.dart' as http;
 import 'dart:convert';
  import 'premium.dart';
+ import 'package:flutter/services.dart';
  bool premiumword = false;
    class RadialGradientApp extends StatefulWidget {
 	
@@ -69,6 +70,9 @@ String currency = 'JPY';
   int assistant_total_token = 0;
   int total_token = 0;
   double cost = 0.00;
+
+  TextEditingController textEditingControl = TextEditingController();
+  TextEditingController textEditingControl1 = TextEditingController();
       @override 
        void initState(){
         super.initState();
@@ -140,12 +144,29 @@ String currency = 'JPY';
     }
     Widget fld(hnttxt,check) {
       return TextField(
+        
         onChanged: (value) {
           setState((){
-            check ? user = value.toString() : system = value.toString();
+            check ?user = value.toString() : system = value.toString();
           });
         },
                       decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          color:Color.fromRGBO(142, 142, 142, 1),
+
+                          icon: Icon(Icons.content_copy),
+                          onPressed: () async{
+                               Clipboard.setData(ClipboardData(text: check ? user : system)).then(
+                                (value) {
+                                  return ScaffoldMessenger.of(context).showSnackBar(
+                                 const SnackBar(
+                                 content: Text('Text Copied'),
+                                 ),
+                                  );
+                                }
+                               );
+                          }
+                        ),
                         filled: true,
                         fillColor: Color.fromRGBO(255, 255, 255, 0.1),
                         border: InputBorder.none,

@@ -21,7 +21,7 @@ CORS(app)
 def hello_world():
     d = {}
     d['Query'] = str(request.args['Query'])
-    openai.api_key = "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"
+    #openai.api_key = "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"
     api_key = '21XTTGBDL2CBO627'
     base_url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE'
 
@@ -33,7 +33,7 @@ def hello_world():
     #model_choice = input("Enter model")
     prompt = str(request.args['Query'])
     prompt1 = str(request.args['Query1'])
-
+    prompt2 = str(request.args['Query2'])
     model_map = {
         "1": "gpt-3.5-turbo",
         "2": "gpt-3.5-turbo-0301"
@@ -50,15 +50,15 @@ def hello_world():
     user_tokens = len("user")
 
     messages = [
-        {"role": "system", "content": ""},
+        {"role": "system", "content": prompt2},
         {"role": "user", "content": prompt},
         {"role": "assistant", "content": prompt1}
     ]
 
-    completion = openai.ChatCompletion.create(
-        model=selected_model,
-        messages=messages
-    )
+    # completion = openai.ChatCompletion.create(
+    #     model=selected_model,
+    #     messages=messages
+    # )
 
     response = completion['choices'][0]['message']
     print("Assistant's response:")
