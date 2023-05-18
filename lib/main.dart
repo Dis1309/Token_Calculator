@@ -14,7 +14,7 @@
 	
       return MaterialApp(
 	
-        title: 'Welcome to Flutter',
+        title: 'ChatGPT Token Calc',
 	      debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {

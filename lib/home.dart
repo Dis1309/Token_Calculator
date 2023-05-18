@@ -1,8 +1,10 @@
  import 'package:flutter/material.dart';
  import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:url_launcher/url_launcher.dart';
  import 'premium.dart';
  import 'package:flutter/services.dart';
+ import 'dart:io';
  bool premiumword = false;
    class RadialGradientApp extends StatefulWidget {
 	
@@ -59,18 +61,18 @@ String currency = 'JPY';
  late String url;
 
   var Data;
-
+  var r = 0;
   String user = 'input';
   String assistant = 'answer';
   String system = 'empty';
-  
+  String assistant1 = "input";
   
   int system_total_token = 0;
   int user_total_token = 0;
   int assistant_total_token = 0;
   int total_token = 0;
   double cost = 0.00;
-
+  String ip = "10.0.2.2";
   TextEditingController textEditingControl = TextEditingController();
   TextEditingController textEditingControl1 = TextEditingController();
       @override 
@@ -81,12 +83,15 @@ String currency = 'JPY';
   system = "";
   model = '1';
   currency = 'JPY';
+  assistant1 = "";
+  r = 0;
   system_total_token = 0;
   user_total_token = 0;
   assistant_total_token = 0;
   total_token = 0;
   cost = 0.00;
-  url = 'http://10.0.2.2:5000/?Query=' +user+"&model="+model+"&Query1="+system+"&lang="+currency.toString();
+  ip = "10.0.2.2";
+  url = 'http://${ip}:5000/?model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
        }
  
     @override
@@ -96,6 +101,7 @@ String currency = 'JPY';
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenMid = screenWidth+screenHeight;
     Future Getdata(url) async {
+      print(url);
   http.Response Response = await http.get(
     Uri.parse(url),
   headers: {
@@ -109,7 +115,16 @@ String currency = 'JPY';
   //check dt = check.fromJson(decodeData);
   return  decodeData;
 }
-    
+    Future printIps() async {
+    for (var interface in await NetworkInterface.list()) {
+      print('== Interface: ${interface.name} ==');
+      for (var addr in interface.addresses) {
+        print(
+            '${addr.address} ${addr.host} ${addr.isLoopback} ${addr.rawAddress} ${addr.type.name}');
+            ip = '${addr.address}';
+      }
+    }
+  }
     Widget size(x,y){
       return SizedBox(
         width: screenWidth/x,
@@ -129,7 +144,22 @@ String currency = 'JPY';
                                 color: Color.fromRGBO(255, 255, 255,0.6),
                                 fontSize: screenMid/fs,
                                 fontWeight: FontWeight.w600,
+                             
                               ),
+                              
+                            );
+    }
+    Widget txt2(txt,fs){
+      return Text(
+                              txt,
+                              style: TextStyle(
+                                color: Color.fromRGBO(255, 255, 255,0.6),
+                                fontSize: screenMid/fs,
+                                fontWeight: FontWeight.w600,
+                              decoration: TextDecoration.underline,
+                              decorationStyle: TextDecorationStyle.double
+                              ),
+                              
                             );
     }
     Widget txt1(txt,fs){
@@ -139,6 +169,7 @@ String currency = 'JPY';
                                 color: Color.fromRGBO(255, 255, 255,1),
                                 fontSize: screenMid/fs,
                                 fontWeight: FontWeight.w600,
+
                               ),
                             );
     }
@@ -157,6 +188,55 @@ String currency = 'JPY';
                           icon: Icon(Icons.content_copy),
                           onPressed: () async{
                                Clipboard.setData(ClipboardData(text: check ? user : system)).then(
+                                (value) {
+                                  return ScaffoldMessenger.of(context).showSnackBar(
+                                 const SnackBar(
+                                 content: Text('Text Copied'),
+                                 ),
+                                  );
+                                }
+                               );
+                          }
+                        ),
+                        filled: true,
+                        fillColor: Color.fromRGBO(255, 255, 255, 0.1),
+                        border: InputBorder.none,
+                        hintText: hnttxt,
+                        hintStyle: 
+                          
+                        TextStyle(
+                          
+                                color: Color.fromRGBO(255, 255, 255,0.6),
+                                fontSize: screenMid/70,
+                                fontWeight: FontWeight.w600,
+                              ),
+                      ),
+                      cursorColor: Colors.white,
+                      style: TextStyle(
+                               
+                                color: Color.fromRGBO(255, 255, 255,1),
+                                fontSize: screenMid/70,
+                                fontWeight: FontWeight.w600,
+                              ),
+                      maxLines: 6,
+                      minLines: 1,
+                    );
+    }
+    Widget fld1(hnttxt) {
+      return TextField(
+        
+        onChanged: (value) {
+          setState((){
+            assistant1 = value.toString();
+          });
+        },
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          color:Color.fromRGBO(142, 142, 142, 1),
+
+                          icon: Icon(Icons.content_copy),
+                          onPressed: () async{
+                               Clipboard.setData(ClipboardData(text:assistant1)).then(
                                 (value) {
                                   return ScaffoldMessenger.of(context).showSnackBar(
                                  const SnackBar(
@@ -505,7 +585,7 @@ String currency = 'JPY';
                         
                         Text(
                                   
-                          'ChatGPT Token Calc\n${currency}',
+                          'ChatGPT Token Calc',
                                   
                           style: TextStyle(
                                   
@@ -581,80 +661,19 @@ String currency = 'JPY';
                                   
                                   ),
                                   Row(
-                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                 children: [
-                                  //  Column(
-                                  //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  //    crossAxisAlignment: CrossAxisAlignment.start,
-                                  //    children: [
-                                       
-                                  //      txt(" ",95),
-                                  //      txt1(" ",95),
-                                  //    ],
-                                  //  ),
-                                  //  size(25,35),
-                                  //  Column(
-                                  //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  //    crossAxisAlignment: CrossAxisAlignment.start,
-                                  //    children: [
-                                      
-                                  //      size(20,95),
-                                  //      txt1(" ",95),
-                                  //    ],
-                                  //  ),
-                                  //  size(25,35),
-                                  //  Column(
-                                  //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  //    crossAxisAlignment: CrossAxisAlignment.start,
-                                  //    children: [
-                                       
-                                  //      txt(" ",95),
-                                  //      txt1(" ",95),
-                                  //    ],
-                                  //  ),
-                                  //   size(25,35),
-                                  //  Column(
-                                  //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  //    crossAxisAlignment: CrossAxisAlignment.start,
-                                  //    children: [
-                                       
-                                  //      size(20,95),
-                                  //      txt1(" ",95),
-                                  //    ],
-                                  //  ),
-                                  //  size(25,35),
-                                  //  Column(
-                                  //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  //    crossAxisAlignment: CrossAxisAlignment.start,
-                                  //    children: [
-                                       
-                                  //      txt(" ",95),
-                                  //       txt1(" ",95),
-                                  //    ],
-                                  //  ),
-                                  //  size(25,35),
-                                  //  Column(
-                                  //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  //    crossAxisAlignment: CrossAxisAlignment.start,
-                                  //    children: [
-                                       
-                                  //      size(20,95),
-                                  //      txt1(" ",95),
-                                  //    ],
-                                  //  ),
-                                   //size(3.72,35),
-                                   Column(
-                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                     crossAxisAlignment: CrossAxisAlignment.start,
-                                     children: [
-                                       
-                                       txt("Cost",95),
-                                       txt1("${cost} ${currency}",95),
-                                     ],
-                                   )
-                                   
-                                 ],
-                               ),
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          
+                                          txt("Cost",95),
+                                          txt1("${cost} ${currency}",95),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ],
                               ):role1(),
                                
@@ -691,7 +710,7 @@ String currency = 'JPY';
                     SizedBox(
                       width: screenWidth/1.1,
                       
-                      child: fld("Slide left for whispers, right for a word symphony.\nGet your desired response.",true),
+                      child: fld("User input here",true),
                     ),
                     size(20,40),
                     Row(
@@ -713,21 +732,7 @@ String currency = 'JPY';
                       ],
                     ),
                     size(20,40),
-                    isSwitch?Container(
-                      width: screenWidth/1.1,
-                      height: screenHeight/5,
-                      decoration: BoxDecoration(
-                        color: Color.fromRGBO(255, 255, 255, 0.1),
-                        shape: BoxShape.rectangle
-                                
-                      ),
-                      child: SingleChildScrollView(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: txt("${assistant}",70),
-                        ),
-                      ),
-                    ):Container(),//
+                    isSwitch?SizedBox(width: screenWidth/1.1,child: fld1("Give the response of the of your GPT")):Container(),//
                     premiumword ? premium():Container(),
                     size(20,40),
                     SizedBox(
@@ -735,11 +740,12 @@ String currency = 'JPY';
                       width:  screenWidth/3,
                       child: ElevatedButton(onPressed: ()async{
                         setState((){
-                          url = 'http://10.0.2.2:5000/?Query=' +user+"&model="+model+"&Query1="+system+"&lang="+currency;
+                          if(r==0) {printIps();r++;}
+                          url = 'http://${ip}:5000/?model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
                         });
                         Data = await Getdata(url);
                           setState(() {
-                            assistant = Data['response']['content'];
+                            
                             system_total_token = Data['system_tokens'];
                             user_total_token = Data['user_tokens'];
                             assistant_total_token = Data['assistant_tokens'];
@@ -760,7 +766,19 @@ String currency = 'JPY';
                       ),),
                     ),        
                     size(20,40),
-                    
+                    SizedBox(
+                      width: screenWidth/1.1,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          size(20,40),
+                          InkWell(
+                            child: txt2("Go to ChatGPT", 75),
+                            onTap: () async {await launchUrl(Uri.parse("https://chat.openai.com/"));},
+                          )
+                        ]
+                      ),
+                    ),size(20,40),
                       
                      ],
                    
