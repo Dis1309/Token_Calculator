@@ -21,7 +21,7 @@ CORS(app)
 def hello_world():
     d = {}
     d['Query'] = str(request.args['Query'])
-    openai.api_key = "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"
+    openai.api_key = "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"
     api_key = '21XTTGBDL2CBO627'
     base_url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE'
 
@@ -83,6 +83,24 @@ def hello_world():
 
     from_c = 'USD'
     to_c = str(request.args['lang'])
+    #to_c = input("currency input")
+    # to_c_map = {
+    #     '1': "JPY",
+    #     '2': 'USD',
+    #     '3': 'EUR',
+    #     '4': 'GBP',
+    #     '5': 'CHF',
+    #     '6': 'INR',
+    #     '7': 'CNY',
+    #     '8': 'RUB'
+    # }
+
+    # if to_c in to_c_map:
+    #     selected_c = model_map[to_c]
+    # else:
+    #     print("Invalid option. Using default currency USD.")
+    #     selected_c = "USD"
+    #to_c = input("language input")
     amount = float(cost)
 
     main_url = f'{base_url}&from_currency={from_c}&to_currency={to_c}&apikey={api_key}'
@@ -100,9 +118,9 @@ def hello_world():
     d['total_tokens'] = total_tokens
     d['cost'] = rate*amount
     d['response'] = response
-    d['model'] = str(request.args['model'])
-    d['lang'] = str(request.args['lang'])
-    d['Query1'] = str(request.args['Query1'])
+    #d['model'] = str(request.args['model'])
+    #d['lang'] = str(request.args['lang'])
+    #d['Query1'] = str(request.args['Query1'])
     return jsonify(d)
 
 if __name__ == '__main__':

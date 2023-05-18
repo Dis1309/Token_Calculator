@@ -39,7 +39,7 @@ class _RadialGradientAppState extends State<RadialGradientApp> {
   return menuItems;
 }
 
-String currency = "JPY";
+String currency = 'JPY';
        
        List<DropdownMenuItem<String>> get currencies{
   List<DropdownMenuItem<String>> menuItems = [
@@ -72,17 +72,17 @@ String currency = "JPY";
       @override 
        void initState(){
         super.initState();
-         user = '';
-  assistant = '';
-  system = '';
+         user = "";
+  assistant = "Get Response Here";
+  system = "";
   model = '1';
-  currency = "JPY";
+  currency = 'JPY';
   system_total_token = 0;
   user_total_token = 0;
   assistant_total_token = 0;
   total_token = 0;
   cost = 0.00;
-  url = 'http://127.0.0.1:5000/?Query=' +user+"&model="+model+"&lang"+currency+"&Query1"+assistant;
+  url = 'http://10.0.2.2:5000/?Query=' +user+"&model="+model+"&Query1="+system+"&lang="+currency.toString();
        }
  
     @override
@@ -142,7 +142,7 @@ String currency = "JPY";
       return TextField(
         onChanged: (value) {
           setState((){
-            check ? user = value : assistant = value;
+            check ? user = value.toString() : system = value.toString();
           });
         },
                       decoration: InputDecoration(
@@ -215,9 +215,9 @@ String currency = "JPY";
                               icon: Icon(Icons.arrow_circle_down,
                               color: Color.fromRGBO(255, 255, 255,1)),
                                     value: model,
-                                    onChanged: (String? newValue) {
+                                    onChanged: (newValue) {
                                       setState(() {
-                      model = newValue!;
+                        model = newValue!.toString();
                                       });
                         },
                         items: models),
@@ -270,9 +270,9 @@ String currency = "JPY";
                                     icon: Icon(Icons.arrow_circle_down,
                                     color: Color.fromRGBO(255, 255, 255,1)),
                                           value: currency,
-                                          onChanged: (String? newValue) {
+                                          onChanged: (newValue) {
                                             setState(() {
-                            currency = newValue!;
+                            //currency = newValue!.toString();
                                             });
                               },
                               items: currencies),
@@ -481,9 +481,10 @@ String currency = "JPY";
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         size1(5000,50),
+                        
                         Text(
                                   
-                          'ChatGPT Token Calc',
+                          'ChatGPT Token Calc\n${currency}',
                                   
                           style: TextStyle(
                                   
@@ -561,73 +562,73 @@ String currency = "JPY";
                                   Row(
                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                  children: [
-                                   Column(
-                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                     crossAxisAlignment: CrossAxisAlignment.start,
-                                     children: [
+                                  //  Column(
+                                  //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  //    crossAxisAlignment: CrossAxisAlignment.start,
+                                  //    children: [
                                        
-                                       txt(" ",95),
-                                       txt1(" ",95),
-                                     ],
-                                   ),
-                                   size(25,35),
-                                   Column(
-                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                     crossAxisAlignment: CrossAxisAlignment.start,
-                                     children: [
+                                  //      txt(" ",95),
+                                  //      txt1(" ",95),
+                                  //    ],
+                                  //  ),
+                                  //  size(25,35),
+                                  //  Column(
+                                  //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  //    crossAxisAlignment: CrossAxisAlignment.start,
+                                  //    children: [
                                       
-                                       size(20,95),
-                                       txt1(" ",95),
-                                     ],
-                                   ),
-                                   size(25,35),
-                                   Column(
-                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                     crossAxisAlignment: CrossAxisAlignment.start,
-                                     children: [
+                                  //      size(20,95),
+                                  //      txt1(" ",95),
+                                  //    ],
+                                  //  ),
+                                  //  size(25,35),
+                                  //  Column(
+                                  //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  //    crossAxisAlignment: CrossAxisAlignment.start,
+                                  //    children: [
                                        
-                                       txt(" ",95),
-                                       txt1(" ",95),
-                                     ],
-                                   ),
-                                    size(25,35),
-                                   Column(
-                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                     crossAxisAlignment: CrossAxisAlignment.start,
-                                     children: [
+                                  //      txt(" ",95),
+                                  //      txt1(" ",95),
+                                  //    ],
+                                  //  ),
+                                  //   size(25,35),
+                                  //  Column(
+                                  //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  //    crossAxisAlignment: CrossAxisAlignment.start,
+                                  //    children: [
                                        
-                                       size(20,95),
-                                       txt1(" ",95),
-                                     ],
-                                   ),
-                                   size(25,35),
-                                   Column(
-                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                     crossAxisAlignment: CrossAxisAlignment.start,
-                                     children: [
+                                  //      size(20,95),
+                                  //      txt1(" ",95),
+                                  //    ],
+                                  //  ),
+                                  //  size(25,35),
+                                  //  Column(
+                                  //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  //    crossAxisAlignment: CrossAxisAlignment.start,
+                                  //    children: [
                                        
-                                       txt(" ",95),
-                                        txt1(" ",95),
-                                     ],
-                                   ),
-                                   size(25,35),
-                                   Column(
-                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                     crossAxisAlignment: CrossAxisAlignment.start,
-                                     children: [
+                                  //      txt(" ",95),
+                                  //       txt1(" ",95),
+                                  //    ],
+                                  //  ),
+                                  //  size(25,35),
+                                  //  Column(
+                                  //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  //    crossAxisAlignment: CrossAxisAlignment.start,
+                                  //    children: [
                                        
-                                       size(20,95),
-                                       txt1(" ",95),
-                                     ],
-                                   ),
-                                   size(3.72,35),
+                                  //      size(20,95),
+                                  //      txt1(" ",95),
+                                  //    ],
+                                  //  ),
+                                   //size(3.72,35),
                                    Column(
                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                      crossAxisAlignment: CrossAxisAlignment.start,
                                      children: [
                                        
                                        txt("Cost",95),
-                                       txt1("${cost} JPY",95),
+                                       txt1("${cost} ${currency}",95),
                                      ],
                                    )
                                    
@@ -678,7 +679,7 @@ String currency = "JPY";
                         //size(20,30),
                         Padding(
                           padding: const EdgeInsets.only(left :20.0),
-                          child: txt("system:assistant",95),
+                          child: txt("system:assistants",95),
                         ),
                        // size(1.8,30),
                         Switch(
@@ -693,15 +694,17 @@ String currency = "JPY";
                     size(20,40),
                     isSwitch?Container(
                       width: screenWidth/1.1,
-                      height: screenHeight/6.3415,
+                      height: screenHeight/5,
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(255, 255, 255, 0.1),
                         shape: BoxShape.rectangle
-              
+                                
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: txt(textValue,70),
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: txt("${assistant}",70),
+                        ),
                       ),
                     ):Container(),//
                     premiumword ? premium():Container(),
@@ -710,6 +713,9 @@ String currency = "JPY";
                       height: screenHeight/20,
                       width:  screenWidth/3,
                       child: ElevatedButton(onPressed: ()async{
+                        setState((){
+                          url = 'http://10.0.2.2:5000/?Query=' +user+"&model="+model+"&Query1="+system+"&lang="+currency;
+                        });
                         Data = await Getdata(url);
                           setState(() {
                             assistant = Data['response']['content'];
@@ -718,7 +724,7 @@ String currency = "JPY";
                             assistant_total_token = Data['assistant_tokens'];
                             total_token = Data['total_tokens'];
                             cost = Data['cost'];
-                            url = 'http://127.0.0.1:5000/?Query=' +user+"&model="+model+"&lang"+currency+"&Query1"+assistant;
+                            
                           });
                       }, child: 
                       Text("Calc",
