@@ -1,5 +1,3 @@
- //When using real android device uncomment line 753
- 
  import 'package:flutter/material.dart';
  import 'package:http/http.dart' as http;
  import 'dart:convert';
@@ -74,7 +72,7 @@ String currency = 'JPY';
   int assistant_total_token = 0;
   int total_token = 0;
   double cost = 0.00;
-  String ip = "10.0.2.2";
+  
       @override 
        void initState(){
         super.initState();
@@ -90,9 +88,8 @@ String currency = 'JPY';
   assistant_total_token = 0;
   total_token = 0;
   cost = 0.00;
-  if(Platform.isAndroid){ip = "10.0.2.2";}else
-  {ip = "127.0.0.1";}
-  url = 'http://${ip}:5000/?model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
+  
+  url = 'https://tokencalculator--celebi07.repl.co/?model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
        }
  
     @override
@@ -116,18 +113,7 @@ String currency = 'JPY';
   //check dt = check.fromJson(decodeData);
   return  decodeData;
 }
-    Future printIps() async {
-    for (var interface in await NetworkInterface.list()) {
-      print('== Interface: ${interface.name} ==');
-      for (var addr in interface.addresses) {
-        print(
-            '${addr.address} ${addr.host} ${addr.isLoopback} ${addr.rawAddress} ${addr.type.name}');
-            setState((){
-                ip = '${addr.address}';
-            });
-      }
-    }
-  }
+    
     Widget size(x,y){
       return SizedBox(
         width: screenWidth/x,
@@ -751,10 +737,10 @@ String currency = 'JPY';
                       height: screenHeight/20,
                       width:  screenWidth/3,
                       child: ElevatedButton(onPressed: ()async{
-                       // if(r==0) {printIps();r++;}
+                       
                         setState((){
                           
-                          url = 'http://${ip}:5000/?model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
+                          url = 'https://tokencalculator--celebi07.repl.co/?model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
                         });
                         Data = await Getdata(url);
                           setState(() {
