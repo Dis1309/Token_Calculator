@@ -2,8 +2,8 @@
  
  import 'package:flutter/material.dart';
  import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:url_launcher/url_launcher.dart';
+ import 'dart:convert';
+ import 'package:url_launcher/url_launcher.dart';
  import 'premium.dart';
  import 'package:flutter/services.dart';
  import 'dart:io';
@@ -90,7 +90,8 @@ String currency = 'JPY';
   assistant_total_token = 0;
   total_token = 0;
   cost = 0.00;
-  ip = "127.0.0.1";
+  if(Platform.isAndroid){ip = "10.0.2.2";}else
+  {ip = "127.0.0.1";}
   url = 'http://${ip}:5000/?model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
        }
  
@@ -403,7 +404,7 @@ String currency = 'JPY';
                                             txt1("${system_total_token}",95),
                                           ],
                                         ),
-                                        size(30,35),
+                                        size(50,35),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -413,7 +414,7 @@ String currency = 'JPY';
                                       txt1("+",95),
                                     ],
                                   ),
-                                  size(30,35),
+                                  size(50,35),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -423,7 +424,7 @@ String currency = 'JPY';
                                       txt1("${assistant_total_token}",95),
                                     ],
                                   ),
-                                   size(30,35),
+                                   size(50,35),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -433,7 +434,7 @@ String currency = 'JPY';
                                       txt1("+",95),
                                     ],
                                   ),
-                                  size(30,35),
+                                  size(50,35),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -443,7 +444,7 @@ String currency = 'JPY';
                                        txt1("${user_total_token}",95),
                                     ],
                                   ),
-                                  size(30,35),
+                                  size(50,35),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -453,7 +454,7 @@ String currency = 'JPY';
                                       txt1("=",95),
                                     ],
                                   ),
-                                  size(30,35),
+                                  size(50,35),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -463,7 +464,7 @@ String currency = 'JPY';
                                       txt1("${total_token}",95),
                                     ],
                                   ),
-                                  size(15,35),
+                                  size(50,35),
                                       ],
                                     ),
                                   );
@@ -478,14 +479,14 @@ String currency = 'JPY';
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            txt("Role", 60),
+                                            txt("Role", 80),
                                             size(30,90),
                                             txt("System",80),
                                             size(30,90),
                                             txt1("${system_total_token}",80),
                                           ],
                                         ),
-                                        size(30,35),
+                                        size(50,35),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -497,7 +498,7 @@ String currency = 'JPY';
                                       txt1("+",80),
                                     ],
                                   ),
-                                  size(30,35),
+                                  size(50,35),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -509,7 +510,7 @@ String currency = 'JPY';
                                       txt1("${assistant_total_token}",80),
                                     ],
                                   ),
-                                   size(30,35),
+                                   size(50,35),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -533,7 +534,7 @@ String currency = 'JPY';
                                        txt1("${user_total_token}",80),
                                     ],
                                   ),
-                                  size(30,35),
+                                  size(50,35),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -545,7 +546,7 @@ String currency = 'JPY';
                                       txt1("=",80),
                                     ],
                                   ),
-                                  size(30,35),
+                                  size(50,35),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.start,
