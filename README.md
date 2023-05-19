@@ -1,18 +1,18 @@
-# ChatGPT Token Calculator
+# ChatGPT Token Calculator   
 Introduction: Welcome to the documentation for ChatGPT Token Calculator! This guide will walk you through the installation process and explain how to make the most of our app's features. ChatGPT Token Calculator is a powerful tool designed to calculate the total number of tokens.
 
-# Table of Contents:
-•	Introduction
-•	Installation Guide
-•	User Interface (UI) Guide
-•	Feature Descriptions
-•	Token Calculator
-•	Troubleshooting
-•	Support and Contact Information
-•	Conclusion
-# Installation Guide
+# Table of Contents:   
+•	Introduction   
+•	Installation Guide   
+•	User Interface (UI) Guide     
+•	Feature Descriptions   
+•	Token Calculator   
+•	Troubleshooting   
+•	Support and Contact Information   
+•	Conclusion   
+# Installation Guide   
 First install or upgrade to the latest version of Flutter. Follow these installation [guides](https://docs.flutter.dev/get-started/install)
-It is recommended to use Android Studio as you code editor, which can be downloaded [here](https://developer.android.com/studio/?gclid=CjwKCAjwq_D7BRADEiwAVMDdHjI_Lu5xR1whSMHH-WDMO3x6WDQVbBcZxbhN9h6m9SsT6b_wjmuKkhoCbSwQAvD_BwE&gclsrc=aw.ds). To complete the iOS deployment steps you will also need to have [Xcode](https://developer.apple.com/xcode/) installed. The last piece you will need to set up before beginning this project is the set up of an [iOS simulator](https://docs.flutter.dev/get-started/install/macos#set-up-the-ios-simulator) as well as an [Android emulator](https://docs.flutter.dev/get-started/install/macos#set-up-the-android-emulator). Once these sets have been completed you are ready to start working with the Flutter Framework!    You need to run the file new_premium_plan in the ml_model folder.      If you are using it ion real-device then Uncomment line - 753.
+It is recommended to use Android Studio as you code editor, which can be downloaded [here](https://developer.android.com/studio/?gclid=CjwKCAjwq_D7BRADEiwAVMDdHjI_Lu5xR1whSMHH-WDMO3x6WDQVbBcZxbhN9h6m9SsT6b_wjmuKkhoCbSwQAvD_BwE&gclsrc=aw.ds). To complete the iOS deployment steps you will also need to have [Xcode](https://developer.apple.com/xcode/) installed. The last piece you will need to set up before beginning this project is the set up of an [iOS simulator](https://docs.flutter.dev/get-started/install/macos#set-up-the-ios-simulator) as well as an [Android emulator](https://docs.flutter.dev/get-started/install/macos#set-up-the-android-emulator). Once these sets have been completed you are ready to start working with the Flutter Framework!    You need to run the file new_premium_plan in the ml_model folder.      If you are using it ios real-device then Uncomment line - 753.
 
 # User Interface (UI) Guide:
 •	Role is used for calculating number of tokens used in System, Assistant and User along with the total no of tokens.
