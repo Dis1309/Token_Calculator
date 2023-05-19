@@ -1,3 +1,5 @@
+ //When using real android device uncomment line 753
+ 
  import 'package:flutter/material.dart';
  import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -73,8 +75,6 @@ String currency = 'JPY';
   int total_token = 0;
   double cost = 0.00;
   String ip = "10.0.2.2";
-  TextEditingController textEditingControl = TextEditingController();
-  TextEditingController textEditingControl1 = TextEditingController();
       @override 
        void initState(){
         super.initState();
@@ -90,7 +90,7 @@ String currency = 'JPY';
   assistant_total_token = 0;
   total_token = 0;
   cost = 0.00;
-  ip = "10.0.2.2";
+  ip = "127.0.0.1";
   url = 'http://${ip}:5000/?model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
        }
  
@@ -121,7 +121,9 @@ String currency = 'JPY';
       for (var addr in interface.addresses) {
         print(
             '${addr.address} ${addr.host} ${addr.isLoopback} ${addr.rawAddress} ${addr.type.name}');
-            ip = '${addr.address}';
+            setState((){
+                ip = '${addr.address}';
+            });
       }
     }
   }
@@ -388,6 +390,8 @@ String currency = 'JPY';
 }
 	  Widget role(){
       return Container(
+        width:screenWidth/1.1,
+        height: screenHeight/15,
                                     child: Row(
                                       children: [
                                         Column(
@@ -466,6 +470,8 @@ String currency = 'JPY';
     }
     Widget role1(){
       return Container(
+        width:screenWidth/1.1,
+        height:screenHeight/10,
                                     child: Row(
                                       children: [
                                         Column(
@@ -636,7 +642,7 @@ String currency = 'JPY';
                     size(20,60),
                     Container(
                       width: screenWidth/1.1,
-                      height: screenHeight/6.3415,
+                      height: screenHeight/6 ,
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(255, 255, 255, 0.1),
                         shape: BoxShape.rectangle,
@@ -656,23 +662,28 @@ String currency = 'JPY';
                               Column(
                                 children: [
                                   role(),
+                                  
                                   Divider(
                                     color: Colors.white,
                                   
                                   ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          
-                                          txt("Cost",95),
-                                          txt1("${cost} ${currency}",95),
-                                        ],
-                                      ),
-                                    ],
+                                  Container(
+                                    width: screenWidth/1.1,
+                                    height: screenHeight/27,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            
+                                            txt("Cost",95),
+                                            txt1("${cost} ${currency}",95),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ):role1(),
@@ -739,8 +750,9 @@ String currency = 'JPY';
                       height: screenHeight/20,
                       width:  screenWidth/3,
                       child: ElevatedButton(onPressed: ()async{
+                       // if(r==0) {printIps();r++;}
                         setState((){
-                          if(r==0) {printIps();r++;}
+                          
                           url = 'http://${ip}:5000/?model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
                         });
                         Data = await Getdata(url);
@@ -753,6 +765,7 @@ String currency = 'JPY';
                             cost = Data['cost'];
                             
                           });
+                          
                       }, child: 
                       Text("Calc",
                       style: TextStyle(
