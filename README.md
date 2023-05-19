@@ -16,11 +16,11 @@ It is recommended to use Android Studio as you code editor, which can be downloa
 
 # User Interface (UI) Guide:
 •	Role is used for calculating number of tokens used in System, Assistant and User along with the total no of tokens.
-•	It will also calculate the total cost of the required tokens for Premium App.
-•	In the System role application, the user can copy-paste the previous response.
-•	In the Assistant role application, the user can write or copy-paste his query.
-•	In the User role application, the user can copy-paste the response generated.
-•	The copy-paste option is also provided if the prompt is empty the user can paste it in, and if it contains some text the user can copy it also.
+•	It will also calculate the total cost of the required tokens for Premium App.   
+•	In the System role application, the user can copy-paste the previous response.   
+•	In the Assistant role application, the user can write or copy-paste his query.   
+•	In the User role application, the user can copy-paste the response generated.   
+•	The copy-paste option is also provided if the prompt is empty the user can paste it in, and if it contains some text the user can copy it also.   
 •	There is a toggle button which allows you to display the text field if you want.
 •	There is a button which redirects the user to the Premium page shown below.
 •	The user can buy the premium app for only $8.
