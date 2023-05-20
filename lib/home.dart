@@ -688,7 +688,21 @@ String currency = 'JPY';
                     Row(
                       children: [
                         size(20,30),
-                        txt("system:role",95),
+                       Tooltip(
+                        message: 'Input Previous response',
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          
+                        ),
+                        height: 50,
+      padding: const EdgeInsets.all(8.0),
+      preferBelow: false,
+      textStyle: const TextStyle(
+        fontSize: 24,
+      ),
+      showDuration: const Duration(seconds: 2),
+      waitDuration: const Duration(seconds: 1),
+                        child: txt("system:role",95)),
                         size(400,30)
                       ],
                     ),
@@ -703,7 +717,22 @@ String currency = 'JPY';
                     Row(
                       children: [
                         size(20,30),
-                        txt("system:user",95),
+                        Tooltip(
+                        message: 'Input User response',
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          
+                        ),
+                        height: 50,
+      padding: const EdgeInsets.all(8.0),
+      preferBelow: false,
+      textStyle: const TextStyle(
+        fontSize: 24,
+      ),
+      showDuration: const Duration(seconds: 2),
+      waitDuration: const Duration(seconds: 1),
+                        child: txt("system:user",95),
+                        ),
                         size(400,30)
                       ],
                     ),
@@ -718,10 +747,27 @@ String currency = 'JPY';
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         //size(20,30),
-                        Padding(
-                          padding: const EdgeInsets.only(left :20.0),
-                          child: txt("system:assistants",95),
+                        Tooltip(
+                        message: 'Input assistant response',
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          
                         ),
+                        height: 50,
+      padding: const EdgeInsets.all(8.0),
+      preferBelow: false,
+      textStyle: const TextStyle(
+        fontSize: 24,
+        color: Colors.black
+      ),
+      showDuration: const Duration(seconds: 2),
+      waitDuration: const Duration(seconds: 1),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left :20.0),
+                          child: txt("system:assistant",95),
+                        ),
+                        ),
+                        
                        // size(1.8,30),
                         Switch(
                           value: isSwitch, onChanged: ((value) {
