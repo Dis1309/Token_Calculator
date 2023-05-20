@@ -629,7 +629,7 @@ String currency = 'JPY';
                     size(20,60),
                     Container(
                       width: screenWidth/1.1,
-                      height: screenHeight/6 ,
+                      height: screenHeight/4 ,
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(255, 255, 255, 0.1),
                         shape: BoxShape.rectangle,
