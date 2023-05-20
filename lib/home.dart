@@ -378,7 +378,7 @@ String currency = 'JPY';
 	  Widget role(){
       return Container(
         width:screenWidth/1.1,
-        height: screenHeight/15,
+        
                                     child: Row(
                                       children: [
                                         Column(
@@ -629,7 +629,7 @@ String currency = 'JPY';
                     size(20,60),
                     Container(
                       width: screenWidth/1.1,
-                      height: screenHeight/4 ,
+                      height: screenHeight/6 ,
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(255, 255, 255, 0.1),
                         shape: BoxShape.rectangle,
@@ -658,7 +658,7 @@ String currency = 'JPY';
                                     ),
                                     Container(
                                       width: screenWidth/1.1,
-                                      height: screenHeight/27,
+                                      
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         children: [
