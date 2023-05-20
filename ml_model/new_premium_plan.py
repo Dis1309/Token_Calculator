@@ -27,7 +27,7 @@ def hello_world():
     api_key = '21XTTGBDL2CBO627'
     base_url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE'
     import tiktoken
-    encoding = tiktoken.get_encoding("cl100k_base")
+    encoding = tiktoken.get_encoding("p50k_base")
 
     model_map = {
             "1": "gpt-3.5-turbo",
@@ -53,11 +53,11 @@ def hello_world():
         return num_tokens
 
     prompt1 = str(request.args['Query2'])
-    System_tokens = num_tokens_from_string(prompt1, "cl100k_base")
+    System_tokens = num_tokens_from_string(prompt1, "p50k_base")
     prompt2 = str(request.args['Query'])
-    User_tokens = num_tokens_from_string(prompt2, "cl100k_base")
+    User_tokens = num_tokens_from_string(prompt2, "p50k_base")
     prompt3 = str(request.args['Query1'])
-    Assistant_tokens = num_tokens_from_string(prompt3, "cl100k_base")
+    Assistant_tokens = num_tokens_from_string(prompt3, "p50k_base")
     total_tokens = System_tokens + User_tokens + Assistant_tokens
     cost_per_1000_tokens = 0.002 / 1000 
     cost = cost_per_1000_tokens * total_tokens
