@@ -646,33 +646,36 @@ String currency = 'JPY';
                               premiumword ?
                               
                               
-                              Column(
-                                children: [
-                                  role(),
-                                  
-                                  Divider(
-                                    color: Colors.white,
-                                  
-                                  ),
-                                  Container(
-                                    width: screenWidth/1.1,
-                                    height: screenHeight/27,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        Column(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            
-                                            txt("Cost",95),
-                                            txt1("${cost} ${currency}",95),
-                                          ],
-                                        ),
-                                      ],
+                              Padding(
+                                padding: const EdgeInsets.only(left:16.0),
+                                child: Column(
+                                  children: [
+                                    role(),
+                                    
+                                    Divider(
+                                      color: Colors.white,
+                                    
                                     ),
-                                  ),
-                                ],
+                                    Container(
+                                      width: screenWidth/1.1,
+                                      height: screenHeight/27,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Column(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              
+                                              txt("Cost",95),
+                                              txt1("${cost} ${currency}",95),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ):role1(),
                                
                                
