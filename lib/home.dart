@@ -89,7 +89,7 @@ String currency = 'JPY';
   total_token = 0;
   cost = 0.00;
   
-  url = 'https://tokencalculator--celebi07.repl.co/?model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
+  url = 'https://onenew-token-today11.onrender.com/?model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
        }
  
     @override
@@ -789,7 +789,7 @@ String currency = 'JPY';
                        
                         setState((){
                           
-                          url = 'https://tokencalculator--celebi07.repl.co/?model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
+                          url = 'https://onenew-token-today11.onrender.com/?model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
                         });
                         Data = await Getdata(url);
                           setState(() {
