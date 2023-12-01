@@ -13,7 +13,6 @@
     Widget build(BuildContext context) {
 	
       return MaterialApp(
-	
         title: 'ChatGPT Token Calc',
 	      debugShowCheckedModeBanner: false,
         initialRoute: '/',

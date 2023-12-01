@@ -89,7 +89,7 @@ String currency = 'JPY';
   total_token = 0;
   cost = 0.00;
   
-  url = 'https://onenew-token-today11.onrender.com/?model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
+  url = 'https://replit.com/@DISHADWIVEDI/TokenGPT?v=1&model=' +model+"&Query2="+system+"&Query="+user+"&Query1="+assistant1+"&lang="+currency;
        }
  
     @override
